@@ -38,8 +38,18 @@ const LineChartComponent = ({
   margin,
   accessibilityLayer,
 }: Props) => {
+  if (!data || data.length === 0) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>No Historical Data</CardTitle>
+          <CardDescription>Unable to render line chart</CardDescription>
+        </CardHeader>
+      </Card>
+    );
+  }
   return (
-    <Card className="h-fit">
+    <Card>
       <CardHeader>
         <CardTitle>Line Chart - Label</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
@@ -85,14 +95,6 @@ const LineChartComponent = ({
           </LineChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm">
-        <div className="flex gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
-        </div>
-      </CardFooter>
     </Card>
   );
 };

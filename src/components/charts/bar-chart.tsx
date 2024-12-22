@@ -41,6 +41,16 @@ const BarChartComponent = ({
   valueFormatter,
   className: classname,
 }: Props) => {
+  if (!chartData || chartData.length === 0) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>No Data Available</CardTitle>
+          <CardDescription>Unable to render bar chart</CardDescription>
+        </CardHeader>
+      </Card>
+    );
+  }
   return (
     <Card>
       <CardHeader>

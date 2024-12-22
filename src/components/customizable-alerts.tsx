@@ -55,7 +55,7 @@ export function CustomizableAlerts({
   }
 
   return (
-    <Card className={`mt-6 ${classname}`}>
+    <Card className={`mt-6 w-full h-full ${classname}`}>
       <CardHeader className="text-2xl font-bold mb-4">
         Customizable Alerts
       </CardHeader>

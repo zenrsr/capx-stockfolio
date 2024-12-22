@@ -66,7 +66,7 @@ export function StockManagement() {
   };
 
   return (
-    <Card className="my-4">
+    <Card className="my-4 w-full">
       <CardHeader>
         <div className="flex justify-between items-center">
           <h2 className="text-2xl font-bold">Stock Management</h2>
@@ -94,7 +94,7 @@ export function StockManagement() {
                 <TableCell>{stock.quantity}</TableCell>
                 <TableCell>${stock.buyPrice.toFixed(2)}</TableCell>
                 <TableCell>${stock.currentValue.toFixed(2)}</TableCell>
-                <TableCell>
+                <TableCell className="flex justify-evenly">
                   <Button
                     variant="outline"
                     size="sm"

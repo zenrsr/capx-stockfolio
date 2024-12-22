@@ -32,7 +32,7 @@ const stockInsights: StockInsight[] = [
 
 export function StockInsights() {
   return (
-    <div className="mt-6 col-span-1 md:col-span-2">
+    <div className="mt-6 col-span-1 md:col-span-2 w-full">
       <h2 className="text-2xl font-bold mb-4">Stock Insights</h2>
       <div className="grid gap-4 md:grid-cols-1">
         {stockInsights.map((insight) => (

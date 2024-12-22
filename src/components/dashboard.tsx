@@ -2,6 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import PieChartComponent from "./charts/pie-chart";
+import { FinnHubComponent } from "./stocks/AlphaVantage";
 import LineChartComponent from "./charts/line-chart";
 
 export function Dashboard() {
@@ -25,7 +26,7 @@ export function Dashboard() {
   ];
 
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-4 sm:col-span-1 md:grid-cols-2 lg:grid-cols-3">
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">
@@ -34,7 +35,12 @@ export function Dashboard() {
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">
-            ${portfolioValue.toLocaleString()}
+            $
+            {new Intl.NumberFormat("en-US", {
+              style: "decimal",
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            }).format(portfolioValue)}
           </div>
         </CardContent>
       </Card>
@@ -48,7 +54,8 @@ export function Dashboard() {
           <div className="text-2xl font-bold">{topPerformingStock}</div>
         </CardContent>
       </Card>
-      <Card className="md:col-span-2">
+
+      <Card className="md:col-span-1 h-fit">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">
             Portfolio Distribution
@@ -63,7 +70,7 @@ export function Dashboard() {
           />
         </CardContent>
       </Card>
-      <Card className="col-span-full">
+      <Card className="sm:col-span-full md:col-span-2">
         <CardHeader>
           <CardTitle>Historical Portfolio Value</CardTitle>
         </CardHeader>
@@ -78,6 +85,7 @@ export function Dashboard() {
           />
         </CardContent>
       </Card>
+      <FinnHubComponent containerClassName="sm:col-span-full md:col-span-1 w-fit" />
     </div>
   );
 }
