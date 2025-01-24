@@ -2,27 +2,40 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import BarChartComponent from "./charts/bar-chart";
+import { useStocks } from "@/app/context/stocks-context";
+import {useEffect} from "react";
 
 export function PortfolioDiversification({
   className: classname,
 }: {
   className: string;
 }) {
-  const diversificationData = [
-    { sector: "Technology", percentage: 40 },
-    { sector: "Healthcare", percentage: 20 },
-    { sector: "Finance", percentage: 15 },
-    { sector: "Consumer Goods", percentage: -10 },
-    { sector: "Energy", percentage: 10 },
-    { sector: "Real Estate", percentage: -5 },
-    { sector: "Manufacturing", percentage: 7 },
-    { sector: "Transportation", percentage: 2 },
-    { sector: "Agriculture", percentage: -12 },
-    { sector: "Telecommunications", percentage: 1 },
-    { sector: "Retail", percentage: 3 },
-    { sector: "Energy", percentage: -25 },
-    { sector: "Utilities", percentage: 12 },
-  ];
+
+  const {stocks, fetchStocks} = useStocks();
+
+console.log("Stocks:", stocks);
+
+
+  const stockDiversification = Object.values(
+      stocks.reduce((acc, stock) => {
+        const sector = stock.cat;
+        const profitLoss =  (stock.currentPrice - stock.buyPrice) * stock.quantity;
+
+          if (sector) { // Ensure sector exists
+              if (acc[sector]) {
+                  acc[sector].percentage += profitLoss;
+              } else {
+                  acc[sector] = { sector, percentage: profitLoss };
+              }
+          } else {
+              console.warn("Stock missing category:", stock); // Log unexpected cases
+          }
+
+          return acc;
+      }, {} as Record<string, { sector: string; percentage: number }>)
+  );
+
+  console.log("Resulting Diversification Data:", stockDiversification);
 
   return (
     <Card className={`mt-6 ${classname}`}>
@@ -31,7 +44,7 @@ export function PortfolioDiversification({
       </CardHeader>
       <CardContent>
         <BarChartComponent
-          data={diversificationData}
+          data={stockDiversification}
           index="sector"
           categories={["percentage"]}
           colors={["blue"]}

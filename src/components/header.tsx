@@ -14,7 +14,7 @@ export function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* App Title */}
         <Link href="/" className="text-lg font-bold tracking-wide">
-          Simple Portfolio Tracker
+          Stockfolio Tracker
         </Link>
 
         {/* Theme Toggle Button */}

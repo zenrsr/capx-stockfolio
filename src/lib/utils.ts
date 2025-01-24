@@ -65,3 +65,32 @@ export const staticCryptoData: Record<
     { date: "2024-06", price: 0.000045 },
   ],
 };
+
+
+export const KNOWN_CRYPTO_SYMBOLS = new Set([
+  "BTC",  // Bitcoin
+  "ETH",  // Ethereum
+  "BNB",  // Binance Coin
+  "XRP",  // Ripple
+  "SOL",  // Solana
+  "ADA",  // Cardano
+  "DOGE", // Dogecoin
+  "DOT",  // Polkadot
+  "AVAX", // Avalanche
+  "LTC",  // Litecoin
+  "LINK", // Chainlink
+  "UNI",  // Uniswap
+  "MATIC", // Polygon
+  "ATOM",  // Cosmos
+  "XLM",   // Stellar
+  "TRX",   // TRON
+  "SHIB",  // Shiba Inu
+  "FIL",   // Filecoin
+  "ICP",   // Internet Computer
+  "ALGO",  // Algorand
+  "VET",   // VeChain
+  "APE",   // ApeCoin
+  "FTM",   // Fantom
+  "NEAR",  // NEAR Protocol
+  "HBAR",  // Hedera Hashgraph
+]);

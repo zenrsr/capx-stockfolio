@@ -30,7 +30,7 @@ type Props = {
 
 const chartConfig = {
   percentage: {
-    label: "Percentage 1",
+    label: "Percentage : ",
   },
 } satisfies ChartConfig;
 
@@ -54,8 +54,7 @@ const BarChartComponent = ({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Stock Market - Analysis</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle>StockFolio Analysis</CardTitle>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
@@ -65,7 +64,7 @@ const BarChartComponent = ({
               cursor={false}
               content={<ChartTooltipContent hideLabel hideIndicator />}
             />
-            <Bar dataKey="percentage">
+            <Bar dataKey="percentage" radius={[4, 4, 0, 0]} barSize={40} minPointSize={10}>
               <LabelList position="top" dataKey="sector" fillOpacity={1} />
               {chartData.map((item) => (
                 <Cell
