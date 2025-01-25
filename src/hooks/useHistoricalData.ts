@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { fetchWithRetry } from "@/hooks/useCurrentPrice";
 import { toast } from "sonner"; // For user feedback
 
@@ -151,7 +151,7 @@ export const useHistoricalData = (stocks: Stock[]) => {
         );
 
         const mergedHistorical: { [date: string]: number } = {};
-        results.forEach(({ ticker, quantity, historical }) => {
+        results.forEach(({ quantity, historical }) => {
           historical.forEach(({ date, price }: HistoricalData) => {
             if (!mergedHistorical[date]) {
               mergedHistorical[date] = 0;

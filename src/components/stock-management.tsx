@@ -18,7 +18,6 @@ import { KNOWN_CRYPTO_SYMBOLS } from "@/lib/utils";
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
